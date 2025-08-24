@@ -8,7 +8,6 @@ set(main_exe_sources ${main_lib_sources} src/main.c)
 
 # include files specifically
 # TEMPLATE: include/cli-tools/base.h is a initial file. This will be created with a simple macro defined in it.
-# TODO: Fix the project name to be programatically adjusted/ Driven out of a Variable name.
 set(header_files 
 	include/${PROJECT_NAME}/base.h
         )

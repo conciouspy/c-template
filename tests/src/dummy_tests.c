@@ -1,6 +1,3 @@
-/**
- * @author: Ashutosh Nandan (ashutosh.nandan@outlook.com)
- */
 #include "tests.h"
 #include <stdlib.h>
 #include <string.h>
