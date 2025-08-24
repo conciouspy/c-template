@@ -13,7 +13,8 @@ This template can be used to create a simple C project with the following featur
 3. Edit the `CMakeLists.txt` file to change the project name.
 4. Edit the `base.h`, `main.c`, `lib.c`, and `dummy_tests.c` files to include your project name in the appropriate places.
 5. Add your source code and test files to the `src` and `tests` folders, respectively.
-6. Run CMake to generate the build files.
+6. In the project folder, create a `build` directory, and cd into it.
+6. Run `cmake ..` to generate the build files.
 7. Build the project using your preferred build system (e.g., Make, Ninja).
 8. Run the tests using the generated test executable.
 
