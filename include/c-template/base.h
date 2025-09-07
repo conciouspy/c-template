@@ -26,4 +26,23 @@
  */
 int base_add(int a, int b);
 
+#define NEW_PTR(p)                                         \
+        p = malloc(sizeof(*(p)));                          \
+        if (p) {                                           \
+            memset(p, 0, sizeof(*(p)));                    \
+        } else {                                           \
+            fprintf(stderr, "Memory allocation failed\n"); \
+            goto ALLOC_ERROR;                              \
+        }                                          
+
+// Takes in a pointer to a pointer and frees the memory, setting the pointer to NULL
+#define FREE_PTR(pp)                                       \
+        if(*(pp)) {                                        \
+            free(*(pp));                                   \
+            *(pp) = NULL;                                  \
+        }
+
+#define IS_NULL(p) ((p) == NULL)
+#define NOT_NULL(p) ((p) != NULL)
+#define IS_WHITE_SPACE(c) ((c) == ' ' || (c) == '\t' || (c) == '\n' || (c) == '\r')
 #endif // __C_TEMPLATE_BASE_H__
