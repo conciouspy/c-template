@@ -18,8 +18,11 @@
 # setting the minimum cmake version.
 cmake_minimum_required(VERSION 3.22.1)
 
-# our project.
-project(c-template C)
+
+# This will ensure that PROJECT_VERSION is available as a variable.
+# PROJECT_VERSION_MAJOR and PROJECT_VERSION_MINOR are also available.
+# This will also set PROJECT_NAME as a variable which can be utilized in build processes.
+project(c-template VERSION 0.1.0 LANGUAGES C)
 
 # sticking with gcc as this is compatible with valgrind.
 set(CMAKE_C_COMPILER "/usr/bin/gcc")
@@ -40,6 +43,15 @@ include_directories(include)
 list(APPEND CMAKE_MODULE_PATH ${CMAKE_CURRENT_LIST_DIR})
 
 include(sourcelist)
+
+# generating the version.h file from version.h.in
+# this will include the version information in the build.
+# the version.h files should be in .gitignore as it is a derived file. Should not be checked in.
+# it should not be source conytrolled.
+# also version.h should not be included in the package installation, as th #define macros it introduces
+# are only relevant during the build process.
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/version.h.in
+               ${CMAKE_CURRENT_SOURCE_DIR}/include/${PROJECT_NAME}/version.h)
 
 # target definitions now.
 add_executable(${PROJECT_NAME}  ${main_exe_sources})

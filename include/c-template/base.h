@@ -24,6 +24,9 @@
  *
  * This header file declares basic functions and macros used across various CLI tools.
  */
+
+const char* get_version();
+
 int base_add(int a, int b);
 
 #define NEW_PTR(p)                                         \

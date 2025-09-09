@@ -32,29 +32,11 @@ target_include_directories(dummy_tests PUBLIC ../include)
 target_link_libraries(dummy_tests
 	PUBLIC ${PROJECT_NAME}lib)
 #----------------------------------------
-#----- C_str Tests-------------------------
-# TEMPLATE: Change the sources variable name.
-# TEMPLATE: Make sure src/tests.c is included.
-set(c_str_test_sources src/tests.c
-                       src/c_str_tests.c)
-# TEMPLATE: Change the executable name.
-# TEMPLATE: Change the target name.
-# TEMPLATE: Change the test name.
-add_executable(c_str_tests ${c_str_test_sources})
-target_include_directories(c_str_tests PUBLIC ../include)
-target_link_libraries(c_str_tests
-	PUBLIC ${PROJECT_NAME}lib)
-#----------------------------------------
 
 # TEMPLATE: DECLARE a new Test.
 add_test(
     NAME dummy_tests
     COMMAND dummy_tests
-)
-
-add_test(
-    NAME c_str_tests
-    COMMAND c_str_tests
 )
 
 # TEMPLATE: create a new custom target 'mc' for memory checks.
@@ -63,8 +45,6 @@ add_custom_target(mc
     COMMENT "################Running memory checks on test suites.#############"
     COMMAND /usr/bin/valgrind --tool=memcheck --gen-suppressions=all --leak-check=full --leak-resolution=med --track-origins=yes --vgdb=no ./dummy_tests
     WORKING_DIRECTORY ${working_directory}
-    COMMAND /usr/bin/valgrind --tool=memcheck --gen-suppressions=all --leak-check=full --leak-resolution=med --track-origins=yes --vgdb=no ./c_str_tests
-    WORKING_DIRECTORY ${working_directory}
   )
 
 # TEMPLATE: (MAC OS uses leaks.) create a new custom target 'macmc' for memory checks.
@@ -72,7 +52,5 @@ add_custom_target(mc
 add_custom_target(macmc
   COMMENT "################Running memory checks on test suites.#############"
   COMMAND /usr/bin/leaks --atExit --list -- ./dummy_tests
-  WORKING_DIRECTORY ${working_directory}
-  COMMAND /usr/bin/leaks --atExit --list -- ./c_str_tests
   WORKING_DIRECTORY ${working_directory}
 )

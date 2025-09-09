@@ -14,7 +14,12 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-#include "c-template/base.h"
+#include <c-template/base.h>
+#include <c-template/version.h>
+
+const char* get_version(){
+    return VERSION;
+}
 
 int base_add(int a, int b) {
     return a + b;

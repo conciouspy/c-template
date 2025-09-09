@@ -1,4 +1,6 @@
 /build
 /.vscode
 /.cache
+/include/c-template/version.h
+
 
